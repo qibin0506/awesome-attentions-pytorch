@@ -19,19 +19,6 @@ class GQA(nn.Module):
         self.to_out = nn.Linear(embed_dim, embed_dim)
         self.dropout = nn.Dropout(p=0.1)
 
-    # def split_head(self, x, group_num=None):
-    #     batch_size, seq_len = x.size()[:2]  # 获取批量大小和序列长度
-    #
-    #     if group_num is None:
-    #         return x.reshape(batch_size, -1, self.num_heads, self.head_dim).transpose(1, 2)
-    #     else:
-    #         # 将 hidden_size 分割为 group_num 和 head_dim
-    #         x = x.reshape(batch_size, -1, group_num, self.head_dim).transpose(1, 2)
-    #         # 再将其手动 expand 到相同大小
-    #         x = x[:, :, None, :, :].expand(batch_size, group_num, self.num_heads // group_num, seq_len,
-    #                                        self.head_dim).reshape(batch_size, self.num_heads, seq_len, self.head_dim)
-    #         return x  # 形状: (batch_size, num_heads, seq_len, head_dim)
-
     def forward(self, x, mask=None):
         batch, seq_len, embed_dim = x.shape
 
