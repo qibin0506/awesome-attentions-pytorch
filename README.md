@@ -3,8 +3,11 @@ Implement Multi Head Attention, Multi Query Attention, Group Query Attention in 
 
 ## Description
 MHA.py: Multi Head Attention
+
 MQA.py: Multi Query Attention
+
 GQA.py: Group Query Attention
+
 all_in_one.py: put everything together
 
 
