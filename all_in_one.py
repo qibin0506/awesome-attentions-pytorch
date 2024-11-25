@@ -65,7 +65,7 @@ class Attention(nn.Module):
             scores.masked_fill_(mask == torch.tensor(False), -torch.inf)
 
         # (batch, n_heads, seq_len, seq_len)
-        weights = self.dropout(scores.softmax(-1))
+        weights = self.dropout(scores.softmax(-1, dtype=torch.float32))
         # (batch, n_heads, seq_len, head_size)
         attn = weights @ v
         # (batch, seq_len, n_heads, head_size)
